@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <AssemblyName>Paylocity.Benefits.Service</AssemblyName>
+        <RootNamespace>Paylocity.Benefits.Service</RootNamespace>
+        <StartupObject>Paylocity.Benefits.Service.Program</StartupObject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="wwwroot\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="automapper" Version="7.0.1" />
+        <PackageReference Include="fluentassertions" Version="5.4.1" />
+        <PackageReference Include="mediatr" Version="5.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.1" />
+        <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="nsubstitute" Version="3.1.0" />
+        <PackageReference Include="OdeToCode.AddFeatureFolders" Version="2.0.1" />
+        <PackageReference Include="xunit" Version="2.3.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    </ItemGroup>
+
+</Project>
