@@ -15,7 +15,7 @@ Please implement a web application based on these assumptions:
 ## Assumptions
 * "Name starts with 'A'" means first name starts with capital A only.
 
-## Prereqquisites
+## Prerequisites
 * `npm install -g @angular/cli`
 * `npm install -g newman`
 * dotnet core 2.1 SDK: https://www.microsoft.com/net/download/
