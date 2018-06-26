@@ -47,7 +47,7 @@ namespace Paylocity.Benefits.Service.Shared
         public decimal CalculatePersonDiscount(Person person)
         {
             // TODO: Assuming first name here. Requirements are unclear and followup is needed. - HAS 06/24/2018 
-            return person.FirstName.StartsWith("a", StringComparison.OrdinalIgnoreCase) ? 0.9m : 1m;
+            return person.FirstName.StartsWith("A") ? 0.9m : 1m;
         }
 
         public decimal CalculateBenefitsCostPerPaycheck(decimal annualBenefitsCost) { return annualBenefitsCost / 26m; }

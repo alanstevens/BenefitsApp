@@ -15,8 +15,8 @@ namespace Paylocity.Benefits.Service.Shared
 
         [Theory]
         [InlineData("Alan")]
-        [InlineData("alice")]
-        [InlineData("antoine")]
+        [InlineData("Alice")]
+        [InlineData("Antoine")]
         [InlineData("Annie")]
         public void should_return_discount_for_names_starting_with_a(string firstName)
         {
@@ -41,8 +41,8 @@ namespace Paylocity.Benefits.Service.Shared
 
         [Theory]
         [InlineData("Alan")]
-        [InlineData("alice")]
-        [InlineData("antoine")]
+        [InlineData("Alice")]
+        [InlineData("Antoine")]
         [InlineData("Annie")]
         public void should_calculate_dependent_benefits_cost_for_name_starting_with_a(string firstName)
         {
@@ -67,8 +67,8 @@ namespace Paylocity.Benefits.Service.Shared
 
         [Theory]
         [InlineData("Alan")]
-        [InlineData("alice")]
-        [InlineData("antoine")]
+        [InlineData("Alice")]
+        [InlineData("Antoine")]
         [InlineData("Annie")]
         public void should_calculate_employee_benefits_cost_for_name_starting_with_a(string firstName)
         {

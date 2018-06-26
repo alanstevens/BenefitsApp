@@ -8,12 +8,7 @@ namespace Paylocity.Benefits.Service.Features.Employees
     {
         public EmployeesMappingProfile()
         {
-            CreateMap<CreateEmployeeRequest, Employee>()
-                .ForMember(x => x.AnnualBenefitsCost, opt => opt.Ignore())
-                .ForMember(x => x.BenefitsCostPerPaycheck, opt => opt.Ignore())
-                .ForMember(x => x.Id, opt => opt.Ignore())
-                .ForMember(x => x.PersonalBenefitsCost, opt => opt.Ignore())
-                .ForMember(x => x.Dependents, opt => opt.Ignore());
+            CreateMap<CreateEmployeeRequest, Employee>(MemberList.Source);
 
             CreateMap<Employee, CreateEmployeeResponse>()
                 .ForMember(dest => dest.PersonalBenefitsCost,
@@ -26,10 +21,7 @@ namespace Paylocity.Benefits.Service.Features.Employees
                     opts => opts.MapFrom(
                         src => src.BenefitsCostPerPaycheck.ToCurrency()));
 
-            CreateMap<CreateDependentRequest, Dependent>()
-                .ForMember(x => x.Employee, opt => opt.Ignore())
-                .ForMember(x => x.Id, opt => opt.Ignore())
-                .ForMember(x => x.PersonalBenefitsCost, opt => opt.Ignore());
+            CreateMap<CreateDependentRequest, Dependent>(MemberList.Source);
 
             CreateMap<Dependent, CreateDependentResponse>()
                 .ForMember(dest => dest.PersonalBenefitsCost,
