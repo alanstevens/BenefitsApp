@@ -21,10 +21,10 @@ Please implement a web application based on these assumptions:
 * dotnet core 2.1 SDK: https://www.microsoft.com/net/download/
 
 ## Test
-* `dotnet test src/API/PaylocityBenefitsService.sln`
-* `dotnet src\api\bin\Debug\netcoreapp2.1\Paylocity.Benefits.Service.dll`
-* `dotnet run --project src\api\PaylocityBenefitsService.csproj --launch-profile Service`
-* `newman run "src\API\IntegrationTests\Employees\Employees API Integration Tests.postman_collection.json" -e "src\API\IntegrationTests\Test.postman_environment.json"`
+* `dotnet test API/PaylocityBenefitsService.sln`
+* `dotnet API\bin\Debug\netcoreapp2.1\Paylocity.Benefits.Service.dll`
+* `dotnet run --project API\PaylocityBenefitsService.csproj --launch-profile Service`
+* `newman run "API\IntegrationTests\Employees\Employees API Integration Tests.postman_collection.json" -e "API\IntegrationTests\Test.postman_environment.json"`
 
 ## Missing
 * security
