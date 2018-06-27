@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Paylocity.API.Shared.Entities;
 
 namespace Paylocity.API.Shared
 {
-    public class EmployeeDbContext : DbContext
+    public class ApiDbContext : DbContext
     {
-        public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options)
+        public ApiDbContext(DbContextOptions<ApiDbContext> options)
             : base(options) { }
 
         public DbSet<Person> People { get; set; }

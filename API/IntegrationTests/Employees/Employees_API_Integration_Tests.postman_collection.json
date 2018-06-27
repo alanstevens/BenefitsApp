@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "394c617a-bd62-4372-862d-8e5004198a7a",
-		"name": "Employees API Integration Tests",
+		"name": "Employees_API_Integration_Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

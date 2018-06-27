@@ -13,21 +13,24 @@ Please implement a web application based on these assumptions:
 * There are 26 paychecks in a year.
 
 ## Assumptions
-* "Name starts with 'A'" means first name starts with capital A only.
+* "Name starts with 'A'" means *first name* starts with capital 'A' only.
 
 ## Prerequisites
 * `npm install -g @angular/cli`
 * `npm install -g newman`
 * dotnet core 2.1 SDK: https://www.microsoft.com/net/download/
 
-## Test
-* `dotnet test API/PaylocityBenefitsService.sln`
-* `dotnet API\bin\Debug\netcoreapp2.1\Paylocity.Benefits.Service.dll`
-* `dotnet run --project API\PaylocityBenefitsService.csproj --launch-profile Service`
-* `newman run "API\IntegrationTests\Employees\Employees API Integration Tests.postman_collection.json" -e "API\IntegrationTests\Test.postman_environment.json"`
+## Testing
+* API Unit Tests: `npm run apiTests`
+* API Integration Tests: 
+    * Start the server: `npm run startApi` 
+    * Then, in a new console window:  `npm run apiIntegrationTests`
 
 ## Missing
 * security
 * logging
 * validation
 * docs
+
+## Notes
+* Do not name postman collections with spaces. Use underscores instead.

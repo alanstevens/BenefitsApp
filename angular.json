@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "paylocity-benefits": {
+    "paylocity": {
       "root": "",
-      "sourceRoot": "UI",
+      "sourceRoot": "ui",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -13,17 +13,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/paylocity-benefits",
-            "index": "UI/index.html",
-            "main": "UI/main.ts",
-            "polyfills": "UI/polyfills.ts",
-            "tsConfig": "UI/tsconfig.app.json",
+            "outputPath": "dist/paylocity",
+            "index": "ui/index.html",
+            "main": "ui/main.ts",
+            "polyfills": "ui/polyfills.ts",
+            "tsConfig": "ui/tsconfig.app.json",
             "assets": [
-              "UI/favicon.ico",
-              "UI/assets"
+              "ui/favicon.ico",
+              "ui/assets"
             ],
             "styles": [
-              "UI/styles.css"
+              "ui/styles.css"
             ],
             "scripts": []
           },
@@ -31,8 +31,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "UI/environments/environment.ts",
-                  "with": "UI/environments/environment.prod.ts"
+                  "replace": "ui/environments/environment.ts",
+                  "with": "ui/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -50,34 +50,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "paylocity-benefits:build"
+            "browserTarget": "paylocity:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "paylocity-benefits:build:production"
+              "browserTarget": "paylocity:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "paylocity-benefits:build"
+            "browserTarget": "paylocity:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "UI/test.ts",
-            "polyfills": "UI/polyfills.ts",
-            "tsConfig": "UI/tsconfig.spec.json",
-            "karmaConfig": "UI/karma.conf.js",
+            "main": "ui/test.ts",
+            "polyfills": "ui/polyfills.ts",
+            "tsConfig": "ui/tsconfig.spec.json",
+            "karmaConfig": "ui/karma.conf.js",
             "styles": [
-              "UI/styles.css"
+              "ui/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "UI/favicon.ico",
-              "UI/assets"
+              "ui/favicon.ico",
+              "ui/assets"
             ]
           }
         },
@@ -85,8 +85,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "UI/tsconfig.app.json",
-              "UI/tsconfig.spec.json"
+              "ui/tsconfig.app.json",
+              "ui/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -95,7 +95,7 @@
         }
       }
     },
-    "paylocity-benefits-e2e": {
+    "paylocity-e2e": {
       "root": "src/e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "src/e2e/protractor.conf.js",
-            "devServerTarget": "paylocity-benefits:serve"
+            "devServerTarget": "paylocity:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "paylocity-benefits:serve:production"
+              "devServerTarget": "paylocity:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "paylocity-benefits"
+  "defaultProject": "paylocity"
 }

@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "394c617a-bd62-4372-862d-8e5004198a7a",
+		"name": "Employees_API_Integration_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e9f8d4f-dce3-40d6-b0b8-a85b49082be5",
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"employeeId\", pm.response.json().id);",
+							"",
+							"pm.test(\"Should return default values for new employee.\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.firstName).to.eql(\"Alan\");",
+							"    pm.expect(jsonData.lastName).to.eql(\"Stevens\");",
+							"    pm.expect(jsonData.personalBenefitsCost).to.eql(\"$900.00\");",
+							"    pm.expect(jsonData.annualBenefitsCost).to.eql(\"$900.00\");",
+							"    pm.expect(jsonData.benefitsCostPerPaycheck).to.eql(\"$34.62\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"FirstName\":\"Alan\",\n\t\"LastName\":\"Stevens\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/employees",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Dependent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf23c700-4764-4b8d-a52d-6366568aac86",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Add dependent should return default values\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.employeeId).to.eql(pm.globals.get(\"employeeId\"));",
+							"    pm.expect(jsonData.firstName).to.eql(\"Fred\");",
+							"    pm.expect(jsonData.lastName).to.eql(\"Gunther\");",
+							"    pm.expect(jsonData.personalBenefitsCost).to.eql(\"$500.00\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"EmployeeId\":{{employeeId}},\r\n\t\"FirstName\":\"Fred\",\r\n\t\"LastName\":\"Gunther\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/employees/1/dependents",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"employees",
+						"1",
+						"dependents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Dependent For Missing Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aff01400-8762-4277-bde0-f1a80804eede",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(\"No such employee.\");",
+							"});",
+							"",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.globals.unset(\"missingEmployeeId\");",
+							"pm.globals.unset(\"employeeId\");",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "997687c9-459c-4790-9ba7-53bb728549a7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"missingEmployeeId\", 2147483647);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"EmployeeId\":{{missingEmployeeId}},\r\n\t\"FirstName\":\"Fred\",\r\n\t\"LastName\":\"Gunther\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/employees/{{missingEmployeeId}}/dependents",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"employees",
+						"{{missingEmployeeId}}",
+						"dependents"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
