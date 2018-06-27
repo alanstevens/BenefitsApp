@@ -4,10 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Paylocity.Benefits.Service.Entities;
-using Paylocity.Benefits.Service.Shared;
+using Paylocity.API.Shared;
+using Paylocity.API.Shared.Entities;
 
-namespace Paylocity.Benefits.Service.Features.Employees
+namespace Paylocity.API.Features.Employees
 {
     public class CreateDependentHandler : IRequestHandler<CreateDependentRequest, CreateDependentResponse>
     {
@@ -38,7 +38,7 @@ namespace Paylocity.Benefits.Service.Features.Employees
 
             employee.Dependents.Add(dependent);
 
-            var calculator = new BenefitsCalculator();
+            var calculator = new BenefitsCalculator.BenefitsCalculator();
 
             calculator.CalculateBenefitsCostsFor(employee);
 

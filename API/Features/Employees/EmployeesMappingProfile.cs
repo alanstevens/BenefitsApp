@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Paylocity.Benefits.Service.Entities;
-using Paylocity.Benefits.Service.Shared;
+using Paylocity.API.Shared;
+using Paylocity.API.Shared.Entities;
 
-namespace Paylocity.Benefits.Service.Features.Employees
+namespace Paylocity.API.Features.Employees
 {
     public class EmployeesMappingProfile : Profile
     {

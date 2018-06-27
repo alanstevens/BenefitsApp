@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using MediatR;
+﻿using MediatR;
 
-namespace Paylocity.Benefits.Service.Features.Employees
+namespace Paylocity.API.Features.Employees
 {
     public class CreateEmployeeRequest : IRequest<CreateEmployeeResponse>
     {

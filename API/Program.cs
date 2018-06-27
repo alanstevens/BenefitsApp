@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Paylocity.Benefits.Service
+namespace Paylocity.API
 {
     public class Program
     {

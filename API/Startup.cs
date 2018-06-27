@@ -1,12 +1,13 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Paylocity.API.Shared;
 
-namespace Paylocity.Benefits.Service
+namespace Paylocity.API
 {
     public class Startup
     {

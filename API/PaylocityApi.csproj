@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
-        <AssemblyName>Paylocity.Benefits.Service</AssemblyName>
-        <RootNamespace>Paylocity.Benefits.Service</RootNamespace>
-        <StartupObject>Paylocity.Benefits.Service.Program</StartupObject>
+        <AssemblyName>Paylocity.API</AssemblyName>
+        <RootNamespace>Paylocity.API</RootNamespace>
+        <StartupObject>Paylocity.API.Program</StartupObject>
     </PropertyGroup>
 
     <ItemGroup>

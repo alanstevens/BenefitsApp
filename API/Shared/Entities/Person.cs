@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Paylocity.Benefits.Service.Entities
+namespace Paylocity.API.Shared.Entities
 {
     public abstract class Person
     {

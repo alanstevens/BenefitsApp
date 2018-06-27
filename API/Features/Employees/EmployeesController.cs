@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Paylocity.Benefits.Service.Features.Employees
+namespace Paylocity.API.Features.Employees
 {
     [ApiController]
     public class ApiController : Controller

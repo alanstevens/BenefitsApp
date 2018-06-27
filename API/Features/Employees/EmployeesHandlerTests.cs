@@ -2,9 +2,10 @@
 using AutoMapper;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
+using Paylocity.API.Shared;
 using Xunit;
 
-namespace Paylocity.Benefits.Service.Features.Employees
+namespace Paylocity.API.Features.Employees
 {
     public class EmployeesHandlerTests
     {

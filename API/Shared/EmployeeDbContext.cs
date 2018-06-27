@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Paylocity.Benefits.Service.Entities;
+using Paylocity.API.Shared.Entities;
 
-namespace Paylocity.Benefits.Service
+namespace Paylocity.API.Shared
 {
     public class EmployeeDbContext : DbContext
     {

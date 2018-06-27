@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Paylocity.Benefits.Service.Entities;
-using Paylocity.Benefits.Service.Shared;
+using Paylocity.API.Shared;
+using Paylocity.API.Shared.Entities;
 
-namespace Paylocity.Benefits.Service.Features.Employees
+namespace Paylocity.API.Features.Employees
 {
     public class CreateEmployeeHandler : IRequestHandler<CreateEmployeeRequest, CreateEmployeeResponse>
     {
@@ -17,7 +17,7 @@ namespace Paylocity.Benefits.Service.Features.Employees
         {
             var employee = Mapper.Map<Employee>(request);
 
-            var calculator = new BenefitsCalculator();
+            var calculator = new BenefitsCalculator.BenefitsCalculator();
 
             calculator.CalculateBenefitsCostsFor(employee);
 
