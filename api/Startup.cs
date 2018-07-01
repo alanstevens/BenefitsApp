@@ -1,10 +1,13 @@
+using System;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Paylocity.API.Shared;
 
 namespace Paylocity.API
@@ -19,12 +22,22 @@ namespace Paylocity.API
         {
             services.AddMvc()
                 .AddFeatureFolders();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             services.AddMediatR(GetType().Assembly);
 
-            var options = new DbContextOptionsBuilder<ApiDbContext>()
+            var dbContextOptions = new DbContextOptionsBuilder<ApiDbContext>()
                 .UseInMemoryDatabase("Employees")
                 .Options;
-            var context = new ApiDbContext(options);
+            var context = new ApiDbContext(dbContextOptions);
 
             services.AddSingleton(context);
         }
@@ -42,6 +55,8 @@ namespace Paylocity.API
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseCors("AllowAll");
 
             app.UseStaticFiles();
 

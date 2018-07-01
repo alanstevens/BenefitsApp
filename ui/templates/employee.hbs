@@ -1,0 +1,72 @@
+<!-- start of employee -->
+<div class="container">
+    <!-- start Employee Element  -->
+    <div class="employee row ">
+        <div class="col-sm-2 ">Employee: </div>
+        <div class="col-sm-10 ">
+            <div class="row ">
+                <div class="col-sm-6" style="text-align:right">Benefits Cost:</div>
+                <div class="col-sm-2">Personal</div>
+                <div class="col-sm-2">Annual</div>
+                <div class="col-sm-2">Paycheck</div>
+            </div>
+            <div class="row ">
+                <span class="employee-id" style="display:none;">{{id}}</span>
+                <div class="col-sm-3">{{firstName}}</div>
+                <div class="col-sm-3">{{lastName}}</div>
+                <div class="col-sm-2">{{personalBenefitsCost}}</div>
+                <div class="employee-annual-benefits-cost col-sm-2">{{annualBenefitsCost}}</div>
+                <div class="employee-per-paycheck-benefits-cost col-sm-2">{{benefitsCostPerPaycheck}}</div>
+            </div>
+        </div>
+    </div>
+    <!-- End Employee Element  -->
+
+
+    <!-- start Add Dependent Form -->
+    <div class="row ">
+        <div class="col-sm-6" style="text-align:right">Add a dependent: </div>
+        <div class="col-sm-6 ">
+            <form>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="first">First Name</label>
+                            <input type="text" class="first-name form-control" placeholder="First Name">
+                            <div class="invalid-feedback">
+                                Please provide a first name.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="last">Last Name</label>
+                            <input type="text" class="last-name form-control" placeholder="Last Name">
+                            <div class="invalid-feedback">
+                                Please provide a last name.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <label for="last">Save</label>
+                        <button type="submit" class="add-dependent-button btn btn-primary">Add</button>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Add Dependent Form -->
+
+
+    <!-- dependent list -->
+        <div class="container dependent-list">
+
+            <!-- dependents go here -->
+
+        </div>
+    <!-- end dependent list -->
+
+</div>
+<!-- End of employee -->

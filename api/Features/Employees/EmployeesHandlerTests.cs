@@ -13,17 +13,16 @@ namespace Paylocity.API.Features.Employees
         {
             Mapper.Reset();
             Mapper.Initialize(cfg => cfg.AddProfiles(GetType().Assembly));
-            var options = new DbContextOptionsBuilder<ApiDbContext>()
+            _options = new DbContextOptionsBuilder<ApiDbContext>()
                 .UseInMemoryDatabase("Employees")
                 .Options;
-            _context = new ApiDbContext(options);
         }
 
-        private readonly ApiDbContext _context;
+        private readonly DbContextOptions<ApiDbContext> _options;
 
-        private CreateEmployeeResponse CreateEmployeeResponse()
+        private CreateEmployeeResponse CreateEmployeeResponse(ApiDbContext context)
         {
-            var handler = new CreateEmployeeHandler(_context);
+            var handler = new CreateEmployeeHandler(context);
             var request = new CreateEmployeeRequest
             {
                 FirstName = "First",
@@ -35,60 +34,69 @@ namespace Paylocity.API.Features.Employees
         [Fact]
         public void create_dependent_handler_should_return_new_create_dependent_response()
         {
-            var handler = new CreateDependentHandler(_context);
-            var employee = CreateEmployeeResponse();
-            var request = new CreateDependentRequest
+            using (var context = new ApiDbContext(_options))
             {
-                FirstName = "First",
-                LastName = "Last",
-                EmployeeId = employee.Id
-            };
-            var actual = handler.Handle(request, default(CancellationToken)).Result;
+                var handler = new CreateDependentHandler(context);
+                var employee = CreateEmployeeResponse(context);
+                var request = new CreateDependentRequest
+                {
+                    FirstName = "First",
+                    LastName = "Last",
+                    EmployeeId = employee.Id
+                };
+                var actual = handler.Handle(request, default(CancellationToken)).Result;
 
-            var expected = new CreateDependentResponse
-            {
-                EmployeeId = employee.Id,
-                FirstName = "First",
-                LastName = "Last",
-                PersonalBenefitsCost = "$500.00",
-                EmployeeAnnualBenefitsCost = "$1,500.00",
-                EmployeeBenefitsCostPerPaycheck = "$57.69"
-            };
+                var expected = new CreateDependentResponse
+                {
+                    EmployeeId = employee.Id,
+                    FirstName = "First",
+                    LastName = "Last",
+                    PersonalBenefitsCost = "$500.00",
+                    EmployeeAnnualBenefitsCost = "$1,500.00",
+                    EmployeeBenefitsCostPerPaycheck = "$57.69"
+                };
+                actual.Should().BeEquivalentTo(expected);
+            }
 
-            actual.Should().BeEquivalentTo(expected);
         }
 
         [Fact]
         public void create_dependent_handler_should_return_null_for_missing_employee()
         {
-            var handler = new CreateDependentHandler(_context);
-            var request = new CreateDependentRequest
+            using (var context = new ApiDbContext(_options))
             {
-                FirstName = "First",
-                LastName = "Last",
-                EmployeeId = 999
-            };
-            var actual = handler.Handle(request, default(CancellationToken)).Result;
+                var handler = new CreateDependentHandler(context);
+                var request = new CreateDependentRequest
+                {
+                    FirstName = "First",
+                    LastName = "Last",
+                    EmployeeId = 999
+                };
+                var actual = handler.Handle(request, default(CancellationToken)).Result;
 
-            actual.Should().BeNull();
+                actual.Should().BeNull();
+            }
         }
 
         [Fact]
         public void create_employee_handler_should_return_new_create_employee_response()
         {
-            var actual = CreateEmployeeResponse();
-
-            var expected = new CreateEmployeeResponse
+            using (var context = new ApiDbContext(_options))
             {
-                Id = actual.Id, // not possible to predict this value
-                FirstName = "First",
-                LastName = "Last",
-                PersonalBenefitsCost = "$1,000.00",
-                AnnualBenefitsCost = "$1,000.00",
-                BenefitsCostPerPaycheck = "$38.46"
-            };
+                var actual = CreateEmployeeResponse(context);
 
-            actual.Should().BeEquivalentTo(expected);
+                var expected = new CreateEmployeeResponse
+                {
+                    Id = actual.Id, // not possible to predict this value
+                    FirstName = "First",
+                    LastName = "Last",
+                    PersonalBenefitsCost = "$1,000.00",
+                    AnnualBenefitsCost = "$1,000.00",
+                    BenefitsCostPerPaycheck = "$38.46"
+                };
+
+                actual.Should().BeEquivalentTo(expected);
+            }
         }
     }
 }

@@ -20,10 +20,13 @@ Please implement a web application based on these assumptions:
 ## Assumptions
 * "Name starts with 'A'" means *first name* starts with capital 'A' only.
 * The benefits calculator is part of a larger app beyond just employees.
+* This system does more than manage employees/benefits.
 
 ## Prerequisites
 * `npm install -g @angular/cli`
 * `npm install -g newman`
+* `npm install -g handlebars`
+* `npm install -g http-server`
 * dotnet core 2.1 SDK: https://www.microsoft.com/net/download/
 
 ## Testing
@@ -37,6 +40,11 @@ Please implement a web application based on these assumptions:
 * logging
 * validation
 * docs
+* e2e
+* responsive UI
+
+## TODO
+* do gulpy things
 
 ## Notes
 * Do not name postman collections with spaces. Use underscores instead.
