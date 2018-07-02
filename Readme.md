@@ -12,18 +12,17 @@ Please implement a web application based on these assumptions:
 * All employees are paid $2000 per paycheck before deductions
 * There are 26 paychecks in a year.
 
+## Assumptions
+* "Name starts with 'A'" means *first name* starts with capital 'A' only.
+* The benefits calculator is part of a larger app 
+that does more than manage employees/benefits.
+
 ## Instructions
 * To run the app: 
     * Start the api: `npm run api` 
     * In a new console window, start the ui:  `npm start`
 
-## Assumptions
-* "Name starts with 'A'" means *first name* starts with capital 'A' only.
-* The benefits calculator is part of a larger app beyond just employees.
-* This system does more than manage employees/benefits.
-
 ## Prerequisites
-* `npm install -g @angular/cli`
 * `npm install -g newman`
 * `npm install -g handlebars`
 * `npm install -g http-server`
@@ -40,11 +39,12 @@ Please implement a web application based on these assumptions:
 * logging
 * validation
 * docs
-* e2e
+* e2e tests
 * responsive UI
 
 ## TODO
 * do gulpy things
 
-## Notes
+## Developer Notes
 * Do not name postman collections with spaces. Use underscores instead.
+* Tested on Windows and Linux

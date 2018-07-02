@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Paylocity.API.Shared.Entities;
 
@@ -6,7 +6,8 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
 {
     public class BenefitsCalculator
     {
-        // TODO: I'm uncomfortable mutating these values by reference. - HAS 06/25/2018 
+        // TODO: I'm uncomfortable mutating these values by reference but,
+        // since this is an entity attached to a context, there isn't another good option- HAS 06/25/2018 
         public void CalculateBenefitsCostsFor(Employee employee)
         {
             CalculateBenefitCostForEachDependent(employee.Dependents);
@@ -45,7 +46,6 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
 
         public decimal CalculatePersonDiscount(Person person)
         {
-            // TODO: Assuming first name here. Requirements are unclear and followup is needed. - HAS 06/24/2018 
             return person.FirstName.StartsWith("A") ? 0.9m : 1m;
         }
 
