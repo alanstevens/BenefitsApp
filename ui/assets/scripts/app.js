@@ -23,6 +23,8 @@
     });
 
     function appendEmployee(response) {
+        $("#employeeFirstName").val("");
+        $("#employeeLastName").val("");
         var template = Handlebars.templates["employee.hbs"];
         var markup = template(response);
         var employee = $(markup);
@@ -54,13 +56,14 @@
     }
 
     function appendDependent(response, employee) {
+        employee.find("input.first-name").val("");
+        employee.find("input.last-name").val("");
         var template = Handlebars.templates["dependent.hbs"];
         var markup = template(response);
         var dependentList = employee.find(".dependent-list").first();
         dependentList.append(markup);
         var annual = employee.find(".employee-annual-benefits-cost").first();
-        var paycheck = employee.find(
-            ".employee-per-paycheck-benefits-cost").first();
+        var paycheck = employee.find(".employee-per-paycheck-benefits-cost").first();
         annual.text(response.employeeAnnualBenefitsCost);
         paycheck.text(response.employeeBenefitsCostPerPaycheck);
     }
