@@ -1,5 +1,4 @@
 using MediatR;
-using Paylocity.API.Shared.Entities;
 
 namespace Paylocity.API.Features.Employees
 {

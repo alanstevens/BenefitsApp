@@ -11,7 +11,7 @@ namespace Paylocity.API.Features.Employees
 {
     public class CreateDependentHandler : IRequestHandler<CreateDependentRequest, CreateDependentResponse>
     {
-        public CreateDependentHandler(ApiDbContext context) => _context = context;
+        public CreateDependentHandler(ApiDbContext context) { _context = context; }
 
         private readonly ApiDbContext _context;
 

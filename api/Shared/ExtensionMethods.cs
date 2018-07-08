@@ -9,6 +9,5 @@ namespace Paylocity.API.Shared
             // Bankers rounding (IEEE 754 section 4)
             return decimal.Round(value, 2, MidpointRounding.ToEven).ToString("C");
         }
-        
     }
 }

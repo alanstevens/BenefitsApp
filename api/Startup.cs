@@ -1,13 +1,10 @@
-using System;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Paylocity.API.Shared;
 
 namespace Paylocity.API
@@ -27,7 +24,7 @@ namespace Paylocity.API
             {
                 options.AddPolicy("AllowAll",
                     builder => builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
+                        .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
