@@ -7,13 +7,13 @@ using Paylocity.API.Shared.Entities;
 
 namespace Paylocity.API.Features.Employees
 {
-    public class CreateEmployeeHandler : IRequestHandler<CreateEmployeeRequest, CreateEmployeeResponse>
+    public class CreateEmployeeHandler : IRequestHandler<CreateEmployeeRequest, EmployeeResponse>
     {
         public CreateEmployeeHandler(ApiDbContext context) { _context = context; }
 
         private readonly ApiDbContext _context;
 
-        public Task<CreateEmployeeResponse> Handle(CreateEmployeeRequest request, CancellationToken cancellationToken)
+        public Task<EmployeeResponse> Handle(CreateEmployeeRequest request, CancellationToken cancellationToken)
         {
             var employee = Mapper.Map<Employee>(request);
 
@@ -25,7 +25,7 @@ namespace Paylocity.API.Features.Employees
 
             _context.SaveChanges();
 
-            var response = Mapper.Map<CreateEmployeeResponse>(employee);
+            var response = Mapper.Map<EmployeeResponse>(employee);
 
             return Task.FromResult(response);
         }

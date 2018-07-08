@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Paylocity.API.Shared;
 using Paylocity.API.Shared.Entities;
 
@@ -10,7 +10,7 @@ namespace Paylocity.API.Features.Employees
         {
             CreateMap<CreateEmployeeRequest, Employee>(MemberList.Source);
 
-            CreateMap<Employee, CreateEmployeeResponse>()
+            CreateMap<Employee, EmployeeResponse>()
                 .ForMember(dest => dest.PersonalBenefitsCost,
                     opts => opts.MapFrom(
                         src => src.PersonalBenefitsCost.ToCurrencyString()))
@@ -23,12 +23,12 @@ namespace Paylocity.API.Features.Employees
 
             CreateMap<CreateDependentRequest, Dependent>(MemberList.Source);
 
-            CreateMap<Dependent, CreateDependentResponse>()
+            CreateMap<Dependent, DependentResponse>()
                 .ForMember(dest => dest.PersonalBenefitsCost,
                     opts => opts.MapFrom(
-                        src => src.PersonalBenefitsCost.ToCurrencyString()))
-                .ForMember(x => x.EmployeeAnnualBenefitsCost, opt => opt.Ignore())
-                .ForMember(x => x.EmployeeBenefitsCostPerPaycheck, opt => opt.Ignore());
+                        src => src.PersonalBenefitsCost.ToCurrencyString()));
+            //.ForMember(x => x.EmployeeAnnualBenefitsCost, opt => opt.Ignore())
+            //.ForMember(x => x.EmployeeBenefitsCostPerPaycheck, opt => opt.Ignore());
         }
     }
 }

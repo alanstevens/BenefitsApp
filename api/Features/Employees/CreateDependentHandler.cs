@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,17 +11,20 @@ namespace Paylocity.API.Features.Employees
 {
     public class CreateDependentHandler : IRequestHandler<CreateDependentRequest, CreateDependentResponse>
     {
-        public CreateDependentHandler(ApiDbContext context) { _context = context; }
+        public CreateDependentHandler(ApiDbContext context) => _context = context;
 
         private readonly ApiDbContext _context;
 
         private Task<CreateDependentResponse> CreateResponse(Dependent dependent, Employee employee)
         {
-            var response = Mapper.Map<CreateDependentResponse>(dependent);
+            var dependentResponse = Mapper.Map<DependentResponse>(dependent);
+            var employeeResponse = Mapper.Map<EmployeeResponse>(employee);
 
-            response.EmployeeAnnualBenefitsCost = employee.AnnualBenefitsCost.ToCurrencyString();
-
-            response.EmployeeBenefitsCostPerPaycheck = employee.BenefitsCostPerPaycheck.ToCurrencyString();
+            var response = new CreateDependentResponse
+            {
+                Employee = employeeResponse,
+                Dependent = dependentResponse
+            };
 
             return Task.FromResult(response);
         }

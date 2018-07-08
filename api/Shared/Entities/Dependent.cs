@@ -1,4 +1,4 @@
-﻿namespace Paylocity.API.Shared.Entities
+namespace Paylocity.API.Shared.Entities
 {
     public class Dependent : Person
     {

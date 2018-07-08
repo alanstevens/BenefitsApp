@@ -30,15 +30,13 @@
         var employee = $(markup);
         $("#employees-list").append(employee);
         // enable validation for the added form
-        var url = "http://localhost:55492/api/employees/" + response.id +
-            "/dependents";
+        var url = "http://localhost:55492/api/employees/" + response.id + "/dependents";
 
         var btn = employee.find(".add-dependent-button").first();
         btn.on("click", function(event) {
             event.preventDefault();
 
             var request = {
-                employeeId: employee.find("span.employee-id").text(),
                 firstName: employee.find("input.first-name").val(),
                 lastName: employee.find("input.last-name").val()
             };
@@ -59,12 +57,12 @@
         employee.find("input.first-name").val("");
         employee.find("input.last-name").val("");
         var template = Handlebars.templates["dependent.hbs"];
-        var markup = template(response);
+        var markup = template(response.dependent);
         var dependentList = employee.find(".dependent-list").first();
         dependentList.append(markup);
         var annual = employee.find(".employee-annual-benefits-cost").first();
         var paycheck = employee.find(".employee-per-paycheck-benefits-cost").first();
-        annual.text(response.employeeAnnualBenefitsCost);
-        paycheck.text(response.employeeBenefitsCostPerPaycheck);
+        annual.text(response.employee.annualBenefitsCost);
+        paycheck.text(response.employee.benefitsCostPerPaycheck);
     }
 }());

@@ -5,6 +5,7 @@
     "webserver": "http-server -p 7777 ui -o &",
     "start": "npm run build && npm run webserver",
     "api": "dotnet run --project api/PaylocityApi.csproj --launch-profile Service",
+    "browsersync": "browser-sync start --server --files 'ui/*'",
     "apiTests": "dotnet test",
     "apiIntegrationTests": "newman run \"api/IntegrationTests/Employees/Employees_API_Integration_Tests.postman_collection.json\" -e \"api/IntegrationTests/Test.postman_environment.json\"",
     "build": "handlebars ui/templates/employee.hbs -f ui/assets/scripts/employee-template.js && handlebars ui/templates/dependent.hbs -f ui/assets/scripts/dependent-template.js",

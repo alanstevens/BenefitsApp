@@ -59,15 +59,25 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bf23c700-4764-4b8d-a52d-6366568aac86",
+						"id": "0fbe1211-017e-408d-8daf-6ce620b599e7",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Add dependent should return default values\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.employeeId).to.eql(pm.globals.get(\"employeeId\"));",
-							"    pm.expect(jsonData.firstName).to.eql(\"Fred\");",
-							"    pm.expect(jsonData.lastName).to.eql(\"Gunther\");",
-							"    pm.expect(jsonData.personalBenefitsCost).to.eql(\"$500.00\");",
+							"    var employee = jsonData.employee;",
+							"    var dependent = jsonData.dependent;",
+							"    ",
+							"    pm.expect(employee.id).to.eql(pm.globals.get(\"employeeId\"));",
+							"    pm.expect(employee.firstName).to.eql(\"Alan\");",
+							"    pm.expect(employee.lastName).to.eql(\"Stevens\");",
+							"    pm.expect(employee.personalBenefitsCost).to.eql(\"$900.00\");",
+							"    pm.expect(employee.annualBenefitsCost).to.eql(\"$1,400.00\");",
+							"    pm.expect(employee.benefitsCostPerPaycheck).to.eql(\"$53.85\");",
+							"    ",
+							"    pm.expect(dependent.employeeId).to.eql(pm.globals.get(\"employeeId\"));",
+							"    pm.expect(dependent.firstName).to.eql(\"Fred\");",
+							"    pm.expect(dependent.lastName).to.eql(\"Gunther\");",
+							"    pm.expect(dependent.personalBenefitsCost).to.eql(\"$500.00\");",
 							"});",
 							""
 						]
@@ -84,17 +94,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"EmployeeId\":{{employeeId}},\r\n\t\"FirstName\":\"Fred\",\r\n\t\"LastName\":\"Gunther\"\r\n}"
+					"raw": "{\r\n\t\"FirstName\":\"Fred\",\r\n\t\"LastName\":\"Gunther\"\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/api/employees/1/dependents",
+					"raw": "{{host}}/api/employees/{{employeeId}}/dependents",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"employees",
-						"1",
+						"{{employeeId}}",
 						"dependents"
 					]
 				}

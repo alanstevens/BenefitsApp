@@ -20,7 +20,7 @@ namespace Paylocity.API.Features.Employees
 
         private readonly DbContextOptions<ApiDbContext> _options;
 
-        private CreateEmployeeResponse CreateEmployeeResponse(ApiDbContext context)
+        private EmployeeResponse CreateEmployeeResponse(ApiDbContext context)
         {
             var handler = new CreateEmployeeHandler(context);
             var request = new CreateEmployeeRequest
@@ -48,16 +48,25 @@ namespace Paylocity.API.Features.Employees
 
                 var expected = new CreateDependentResponse
                 {
-                    EmployeeId = employee.Id,
-                    FirstName = "First",
-                    LastName = "Last",
-                    PersonalBenefitsCost = "$500.00",
-                    EmployeeAnnualBenefitsCost = "$1,500.00",
-                    EmployeeBenefitsCostPerPaycheck = "$57.69"
+                    Employee = new EmployeeResponse
+                    {
+                        Id = employee.Id,
+                        FirstName = "First",
+                        LastName = "Last",
+                        PersonalBenefitsCost = "$1,000.00",
+                        AnnualBenefitsCost = "$1,500.00",
+                        BenefitsCostPerPaycheck = "$57.69"
+                    },
+                    Dependent = new DependentResponse
+                    {
+                        EmployeeId = employee.Id,
+                        FirstName = "First",
+                        LastName = "Last",
+                        PersonalBenefitsCost = "$500.00"
+                    }
                 };
                 actual.Should().BeEquivalentTo(expected);
             }
-
         }
 
         [Fact]
@@ -85,7 +94,7 @@ namespace Paylocity.API.Features.Employees
             {
                 var actual = CreateEmployeeResponse(context);
 
-                var expected = new CreateEmployeeResponse
+                var expected = new EmployeeResponse
                 {
                     Id = actual.Id, // not possible to predict this value
                     FirstName = "First",

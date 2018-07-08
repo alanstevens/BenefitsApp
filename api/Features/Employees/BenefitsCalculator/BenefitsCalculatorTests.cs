@@ -46,7 +46,7 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [InlineData("Annie")]
         public void should_calculate_dependent_benefits_cost_for_name_starting_with_a(string firstName)
         {
-            var dependent = new Dependent { FirstName = firstName };
+            var dependent = new Shared.Entities.Dependent { FirstName = firstName };
             var actual = _calculator.CalculateDependentBenefitsCost(dependent);
             var expected = 500m * 0.9m;
             actual.Should().Be(expected);
@@ -59,7 +59,7 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [InlineData("Janice")]
         public void should_calculate_dependent_benefits_cost_for_name_not_starting_with_a(string firstName)
         {
-            var dependent = new Dependent { FirstName = firstName };
+            var dependent = new Shared.Entities.Dependent { FirstName = firstName };
             var actual = _calculator.CalculateDependentBenefitsCost(dependent);
             var expected = 500m;
             actual.Should().Be(expected);
@@ -72,7 +72,7 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [InlineData("Annie")]
         public void should_calculate_employee_benefits_cost_for_name_starting_with_a(string firstName)
         {
-            var employee = new Employee { FirstName = firstName };
+            var employee = new Shared.Entities.Employee { FirstName = firstName };
             var actual = _calculator.CalculateEmployeeBenefitsCost(employee);
             var expected = 1000m * 0.9m;
             actual.Should().Be(expected);
@@ -85,7 +85,7 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [InlineData("Janice")]
         public void should_calculate_employee_benefits_cost_for_name_not_starting_with_a(string firstName)
         {
-            var employee = new Employee { FirstName = firstName };
+            var employee = new Shared.Entities.Employee { FirstName = firstName };
             var actual = _calculator.CalculateEmployeeBenefitsCost(employee);
             var expected = 1000m;
             actual.Should().Be(expected);
@@ -94,15 +94,15 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [Fact]
         public void should_calculate_benefits_cost_for_employee()
         {
-            var employee = new Employee
+            var employee = new Shared.Entities.Employee
             {
                 FirstName = "Sam",
-                Dependents = new List<Dependent>
+                Dependents = new List<Shared.Entities.Dependent>
                 {
-                    new Dependent {FirstName = "Bob"}, // 500
-                    new Dependent {FirstName = "Carole"}, // 500
-                    new Dependent {FirstName = "Ted"}, // 500
-                    new Dependent {FirstName = "Alice"} // 450
+                    new Shared.Entities.Dependent {FirstName = "Bob"}, // 500
+                    new Shared.Entities.Dependent {FirstName = "Carole"}, // 500
+                    new Shared.Entities.Dependent {FirstName = "Ted"}, // 500
+                    new Shared.Entities.Dependent {FirstName = "Alice"} // 450
                 }
             };
             _calculator.CalculateBenefitsCostsFor(employee);
@@ -116,12 +116,12 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [Fact]
         public void should_calculate_annual_total_for_all_dependents()
         {
-            var dependents = new List<Dependent>
+            var dependents = new List<Shared.Entities.Dependent>
             {
-                new Dependent {FirstName = "Bob", PersonalBenefitsCost = 500}, // 500
-                new Dependent {FirstName = "Carole", PersonalBenefitsCost = 500}, // 500
-                new Dependent {FirstName = "Ted", PersonalBenefitsCost = 500}, // 500
-                new Dependent {FirstName = "Alice", PersonalBenefitsCost = 450} // 450
+                new Shared.Entities.Dependent {FirstName = "Bob", PersonalBenefitsCost = 500}, // 500
+                new Shared.Entities.Dependent {FirstName = "Carole", PersonalBenefitsCost = 500}, // 500
+                new Shared.Entities.Dependent {FirstName = "Ted", PersonalBenefitsCost = 500}, // 500
+                new Shared.Entities.Dependent {FirstName = "Alice", PersonalBenefitsCost = 450} // 450
             };
             var actual = _calculator.CalculateAnnualTotalForAllDependents(dependents);
             actual.Should().Be(1950m);
@@ -130,7 +130,7 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [Fact]
         public void calculate_annual_total_costs_for_all_dependents_should_be_zero_for_empty_or_null_list_of_dependents()
         {
-            var actual = _calculator.CalculateAnnualTotalForAllDependents(new List<Dependent>());
+            var actual = _calculator.CalculateAnnualTotalForAllDependents(new List<Shared.Entities.Dependent>());
 
             actual.Should().Be(0);
 
@@ -151,12 +151,12 @@ namespace Paylocity.API.Features.Employees.BenefitsCalculator
         [Fact]
         public void should_calculate_dependent_costs()
         {
-            var dependents = new List<Dependent>
+            var dependents = new List<Shared.Entities.Dependent>
             {
-                new Dependent {FirstName = "Bob"}, // 500
-                new Dependent {FirstName = "Carole"}, // 500
-                new Dependent {FirstName = "Ted"}, // 500
-                new Dependent {FirstName = "Alice"} // 450
+                new Shared.Entities.Dependent {FirstName = "Bob"}, // 500
+                new Shared.Entities.Dependent {FirstName = "Carole"}, // 500
+                new Shared.Entities.Dependent {FirstName = "Ted"}, // 500
+                new Shared.Entities.Dependent {FirstName = "Alice"} // 450
             };
             _calculator.CalculateBenefitCostForEachDependent(dependents);
             dependents.Single(d => d.FirstName == "Bob").PersonalBenefitsCost.Should().Be(500);

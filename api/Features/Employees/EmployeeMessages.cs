@@ -1,14 +1,15 @@
-﻿using MediatR;
+using MediatR;
+using Paylocity.API.Shared.Entities;
 
 namespace Paylocity.API.Features.Employees
 {
-    public class CreateEmployeeRequest : IRequest<CreateEmployeeResponse>
+    public class CreateEmployeeRequest : IRequest<EmployeeResponse>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
 
-    public class CreateEmployeeResponse
+    public class EmployeeResponse
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -25,13 +26,18 @@ namespace Paylocity.API.Features.Employees
         public string LastName { get; set; }
     }
 
-    public class CreateDependentResponse
+    public class DependentResponse
     {
+        public int Id { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PersonalBenefitsCost { get; set; }
-        public string EmployeeAnnualBenefitsCost { get; set; }
-        public string EmployeeBenefitsCostPerPaycheck { get; set; }
+    }
+
+    public class CreateDependentResponse
+    {
+        public EmployeeResponse Employee { get; set; }
+        public DependentResponse Dependent { get; set; }
     }
 }
