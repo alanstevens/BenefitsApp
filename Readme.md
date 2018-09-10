@@ -1,50 +1,27 @@
-# Paylocity App
+# Paylocity
 
-## Problem
-We provide our clients with the ability to pay for their employees’ benefits packages. A portion of these costs are deducted from their paycheck, and we handle that deduction. Please demonstrate how you would code the following scenario:
-* The cost of benefits is $1000/year for each employee
-* Each dependent (children and possibly spouses) incurs a cost of $500/year
-* Anyone whose name starts with ‘A’ gets a 10% discount, employee or dependent
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
 
-We’d like to see this calculation used in a web application where employers input employees and their dependents, and get a preview of the costs.
+## Development server
 
-Please implement a web application based on these assumptions:
-* All employees are paid $2000 per paycheck before deductions
-* There are 26 paychecks in a year.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Assumptions
-* "Name starts with 'A'" means *first name* starts with capital 'A' only.
-* The benefits calculator is part of a larger app 
-that does more than manage employees/benefits.
+## Code scaffolding
 
-## Instructions
-* To run the app: 
-    * Start the api: `npm run api` 
-    * In a new console window, start the ui:  `npm start`
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Prerequisites
-* `npm install -g newman`
-* `npm install -g handlebars`
-* `npm install -g http-server`
-* dotnet core 2.1 SDK: https://www.microsoft.com/net/download/
+## Build
 
-## Testing
-* API Unit Tests: `npm run apiTests`
-* API Integration Tests: 
-    * Start the api server: `npm run api` 
-    * In a new console window, run the tests:  `npm run apiIntegrationTests`
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Missing
-* security
-* logging
-* validation
-* docs
-* e2e tests
-* responsive UI
+## Running unit tests
 
-## TODO
-* do gulpy things
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Developer Notes
-* Do not name postman collections with spaces. Use underscores instead.
-* Tested on Windows and Linux
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
