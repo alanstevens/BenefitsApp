@@ -14,12 +14,12 @@ Please implement a web application based on these assumptions:
 
 ## Assumptions
 * "Name starts with 'A'" means *first name* starts with capital 'A' only.
-* The benefits calculator is part of a larger app 
+* The benefits calculator is part of a larger app
 that does more than manage employees/benefits.
 
 ## Instructions
-* To run the app: 
-    * Start the api: `npm run api` 
+* To run the app:
+    * Start the api: `npm run api`
     * In a new console window, start the ui:  `npm start`
 
 ## Prerequisites
@@ -29,10 +29,10 @@ that does more than manage employees/benefits.
 * dotnet core 2.1 SDK: https://www.microsoft.com/net/download/
 
 ## Testing
-* API Unit Tests: `npm run apiTests`
-* API Integration Tests: 
-    * Start the api server: `npm run api` 
-    * In a new console window, run the tests:  `npm run apiIntegrationTests`
+* API Unit Tests: `npm run apitests`
+* API Integration Tests:
+    * Start the api server: `npm run api`
+    * In a new console window, run the tests:  `npm run apiintegrationtests`
 
 ## Missing
 * security

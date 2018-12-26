@@ -7,6 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "api": "dotnet run --project api/BenefitsAppapi.csproj --launch-profile Service",
+    "apitests": "dotnet test",
+    "apiintegrationtests": "newman run \"api/IntegrationTests/Employees/Employees_API_Integration_Tests.postman_collection.json\" -e \"api/IntegrationTests/Test.postman_environment.json\"",
     "e2e": "ng e2e"
   },
   "private": true,
