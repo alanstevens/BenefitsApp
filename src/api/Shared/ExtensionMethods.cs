@@ -1,6 +1,6 @@
 using System;
 
-namespace Paylocity.API.Shared
+namespace BenefitsApp.API.Shared
 {
     public static class ExtensionMethods
     {

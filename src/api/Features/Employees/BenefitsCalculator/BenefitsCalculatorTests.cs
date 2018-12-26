@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BenefitsApp.API.Shared.Entities;
 using FluentAssertions;
 using NSubstitute;
-using Paylocity.API.Shared.Entities;
 using Xunit;
 
-namespace Paylocity.API.Features.Employees.BenefitsCalculator
+namespace BenefitsApp.API.Features.Employees.BenefitsCalculator
 {
     public class BenefitsCalculatorTests
     {

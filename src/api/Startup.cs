@@ -1,13 +1,13 @@
 using AutoMapper;
+using BenefitsApp.API.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Paylocity.API.Shared;
 
-namespace Paylocity.API
+namespace BenefitsApp.API
 {
     public class Startup
     {
@@ -34,6 +34,7 @@ namespace Paylocity.API
             var dbContextOptions = new DbContextOptionsBuilder<ApiDbContext>()
                 .UseInMemoryDatabase("Employees")
                 .Options;
+
             var context = new ApiDbContext(dbContextOptions);
 
             services.AddSingleton(context);

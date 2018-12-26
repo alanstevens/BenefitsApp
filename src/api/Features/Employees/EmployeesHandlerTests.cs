@@ -1,11 +1,11 @@
 using System.Threading;
 using AutoMapper;
+using BenefitsApp.API.Shared;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Paylocity.API.Shared;
 using Xunit;
 
-namespace Paylocity.API.Features.Employees
+namespace BenefitsApp.API.Features.Employees
 {
     public class EmployeesHandlerTests
     {

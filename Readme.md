@@ -1,4 +1,4 @@
-# Paylocity App
+# Benefits App
 
 ## Problem
 We provide our clients with the ability to pay for their employees’ benefits packages. A portion of these costs are deducted from their paycheck, and we handle that deduction. Please demonstrate how you would code the following scenario:

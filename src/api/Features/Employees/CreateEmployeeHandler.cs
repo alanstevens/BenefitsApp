@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using BenefitsApp.API.Shared;
+using BenefitsApp.API.Shared.Entities;
 using MediatR;
-using Paylocity.API.Shared;
-using Paylocity.API.Shared.Entities;
 
-namespace Paylocity.API.Features.Employees
+namespace BenefitsApp.API.Features.Employees
 {
     public class CreateEmployeeHandler : IRequestHandler<CreateEmployeeRequest, EmployeeResponse>
     {

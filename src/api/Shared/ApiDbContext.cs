@@ -1,7 +1,7 @@
+using BenefitsApp.API.Shared.Entities;
 using Microsoft.EntityFrameworkCore;
-using Paylocity.API.Shared.Entities;
 
-namespace Paylocity.API.Shared
+namespace BenefitsApp.API.Shared
 {
     public class ApiDbContext : DbContext
     {

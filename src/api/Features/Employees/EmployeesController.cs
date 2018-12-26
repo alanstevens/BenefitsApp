@@ -2,12 +2,12 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Paylocity.API.Features.Employees
+namespace BenefitsApp.API.Features.Employees
 {
     [ApiController]
     public class ApiController : Controller
     {
-        public ApiController(IMediator mediator) { _mediator = mediator; }
+        public ApiController(IMediator mediator) => _mediator = mediator;
 
         private readonly IMediator _mediator;
 

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Paylocity.API.Shared.Entities;
+using BenefitsApp.API.Shared.Entities;
 
-namespace Paylocity.API.Features.Employees.BenefitsCalculator
+namespace BenefitsApp.API.Features.Employees.BenefitsCalculator
 {
     public class BenefitsCalculator
     {

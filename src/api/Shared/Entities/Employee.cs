@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Paylocity.API.Shared.Entities
+namespace BenefitsApp.API.Shared.Entities
 {
     public class Employee : Person
     {

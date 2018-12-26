@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Paylocity.API.Features.Employees
+namespace BenefitsApp.API.Features.Employees
 {
     public class CreateEmployeeRequest : IRequest<EmployeeResponse>
     {

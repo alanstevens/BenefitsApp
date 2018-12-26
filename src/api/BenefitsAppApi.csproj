@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
-        <AssemblyName>Paylocity.API</AssemblyName>
-        <RootNamespace>Paylocity.API</RootNamespace>
-        <StartupObject>Paylocity.API.Program</StartupObject>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <AssemblyName>BenefitsAppAPI</AssemblyName>
+        <RootNamespace>BenefitsApp.API</RootNamespace>
+        <StartupObject>BenefitsApp.API.Program</StartupObject>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +22,6 @@
         <PackageReference Include="nsubstitute" Version="3.1.0" />
         <PackageReference Include="OdeToCode.AddFeatureFolders" Version="2.0.1" />
         <PackageReference Include="xunit" Version="2.3.1" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     </ItemGroup>
 
 </Project>
