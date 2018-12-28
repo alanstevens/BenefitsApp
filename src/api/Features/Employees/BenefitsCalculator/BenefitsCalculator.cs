@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using BenefitsApp.API.Shared;
 using BenefitsApp.API.Shared.Entities;
 
 namespace BenefitsApp.API.Features.Employees.BenefitsCalculator
 {
     public class BenefitsCalculator
     {
-        // TODO: I'm uncomfortable mutating these values by reference but,
+        // NOTE: I'm uncomfortable mutating these values by reference but,
         // since this is an entity attached to a context, there isn't another good option- HAS 06/25/2018 
         public void CalculateBenefitsCostsFor(Employee employee)
         {
@@ -21,10 +22,8 @@ namespace BenefitsApp.API.Features.Employees.BenefitsCalculator
             employee.BenefitsCostPerPaycheck = CalculateBenefitsCostPerPaycheck(employee.AnnualBenefitsCost);
         }
 
-        public void CalculateBenefitCostForEachDependent(IEnumerable<Dependent> dependents)
-        {
+        public void CalculateBenefitCostForEachDependent(IEnumerable<Dependent> dependents) =>
             dependents?.ToList().ForEach(d => d.PersonalBenefitsCost = CalculateDependentBenefitsCost(d));
-        }
 
         public decimal CalculateAnnualTotalForAllDependents(IEnumerable<Dependent> dependents)
         {
@@ -44,8 +43,12 @@ namespace BenefitsApp.API.Features.Employees.BenefitsCalculator
             return 500m * discount;
         }
 
-        public decimal CalculatePersonDiscount(Person person) { return person.FirstName.StartsWith("A") ? 0.9m : 1m; }
+        public decimal CalculatePersonDiscount(Person person)
+        {
+            if (person.FirstName.IsBlank()) return 1m;
+            return person.FirstName.StartsWith("A") ? 0.9m : 1m;
+        }
 
-        public decimal CalculateBenefitsCostPerPaycheck(decimal annualBenefitsCost) { return annualBenefitsCost / 26m; }
+        public decimal CalculateBenefitsCostPerPaycheck(decimal annualBenefitsCost) => annualBenefitsCost / 26m;
     }
 }

@@ -1,7 +1,6 @@
-<!-- start of employee -->
-<div class="container">
+<div class="container employee">
     <!-- start Employee Element  -->
-    <div class="employee row ">
+    <div class="row ">
         <div class="col-sm-2 ">Employee: </div>
         <div class="col-sm-10 ">
             <div class="row ">
@@ -12,16 +11,15 @@
             </div>
             <div class="row ">
                 <span class="employee-id" style="display:none;">{{id}}</span>
-                <div class="col-sm-3">{{firstName}}</div>
-                <div class="col-sm-3">{{lastName}}</div>
-                <div class="col-sm-2">{{personalBenefitsCost}}</div>
-                <div class="employee-annual-benefits-cost col-sm-2">{{annualBenefitsCost}}</div>
-                <div class="employee-per-paycheck-benefits-cost col-sm-2">{{benefitsCostPerPaycheck}}</div>
+                <div class="col-sm-3">{{employee.firstName}}</div>
+                <div class="col-sm-3">{{employee.lastName}}</div>
+                <div class="col-sm-2">{{employee.personalBenefitsCost}}</div>
+                <div class="employee-annual-benefits-cost col-sm-2">{{employee.annualBenefitsCost}}</div>
+                <div class="employee-per-paycheck-benefits-cost col-sm-2">{{employee.benefitsCostPerPaycheck}}</div>
             </div>
         </div>
     </div>
     <!-- End Employee Element  -->
-
 
     <!-- start Add Dependent Form -->
     <div class="row ">
@@ -32,7 +30,8 @@
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="first">First Name</label>
-                            <input type="text" class="first-name form-control" placeholder="First Name">
+                            <!-- <input type="text" class="first&#45;name form&#45;control" placeholder="First Name"> -->
+                            <input type="text" [(ngModel)]="firstName" name="firstName" class="first-name form-control" placeholder="First Name" required>
                             <div class="invalid-feedback">
                                 Please provide a first name.
                             </div>
@@ -41,7 +40,8 @@
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="last">Last Name</label>
-                            <input type="text" class="last-name form-control" placeholder="Last Name">
+                            <!-- <input type="text" class="last&#45;name form&#45;control" placeholder="Last Name"> -->
+                            <input type="text" [(ngModel)]="lastName" name="lastName" class="last-name form-control" placeholder="Last Name" required>
                             <div class="invalid-feedback">
                                 Please provide a last name.
                             </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-sm-1">
                         <label for="last">Save</label>
-                        <button type="submit" class="add-dependent-button btn btn-primary">Add</button>
+                        <button (click)="addDependent()" class="add-dependent-button btn btn-primary">Add</button>
                     </div>
                     <div class="col-sm-1">
                     </div>
@@ -59,14 +59,8 @@
     </div>
     <!-- End Add Dependent Form -->
 
-
-    <!-- dependent list -->
-        <div class="container dependent-list">
-
-            <!-- dependents go here -->
-
-        </div>
-    <!-- end dependent list -->
+    <div class="container dependent-list">
+        <app-dependent *ngFor="let dependent of dependents" [dependent]="dependent"></app-dependent>
+    </div>
 
 </div>
-<!-- End of employee -->

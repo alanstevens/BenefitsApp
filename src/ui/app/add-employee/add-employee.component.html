@@ -1,0 +1,36 @@
+<div id="add-employee-form" class="row">
+    <div class="col-sm-12 " style="margin-top:1rem">
+        <h4>Add a new employee: </h4>
+    </div>
+    <div class="col-sm-12 " style="margin-top:1rem">
+        <form>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label for="first">First Name</label>
+                        <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control" id="employeeFirstName" placeholder="First Name" required>
+                        <div class="invalid-feedback">
+                            Please provide a first name.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="last">Last Name</label>
+                        <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" id="employeeLastName" placeholder="Last Name" required>
+                        <div class="invalid-feedback">
+                            Please provide a last name.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <label for="save">save</label>
+                    <button (click)="addEmployee()" id="add-employee-button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="employees-list">
+    <app-employee *ngFor="let employee of employees" [employee]="employee" class="row"></app-employee>
+</div>

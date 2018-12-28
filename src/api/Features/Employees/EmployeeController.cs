@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace BenefitsApp.API.Features.Employees
 {
     [ApiController]
-    public class ApiController : Controller
+    public class EmployeeController : Controller
     {
-        public ApiController(IMediator mediator) => _mediator = mediator;
+        public EmployeeController(IMediator mediator) => _mediator = mediator;
 
         private readonly IMediator _mediator;
 

@@ -15,20 +15,6 @@ namespace BenefitsApp.API.Features.Employees
 
         private readonly ApiDbContext _context;
 
-        private Task<CreateDependentResponse> CreateResponse(Dependent dependent, Employee employee)
-        {
-            var dependentResponse = Mapper.Map<DependentResponse>(dependent);
-            var employeeResponse = Mapper.Map<EmployeeResponse>(employee);
-
-            var response = new CreateDependentResponse
-            {
-                Employee = employeeResponse,
-                Dependent = dependentResponse
-            };
-
-            return Task.FromResult(response);
-        }
-
         public Task<CreateDependentResponse> Handle(CreateDependentRequest request, CancellationToken cancellationToken)
         {
             var dependent = Mapper.Map<Dependent>(request);
@@ -48,6 +34,20 @@ namespace BenefitsApp.API.Features.Employees
             _context.SaveChanges();
 
             return CreateResponse(dependent, employee);
+        }
+
+        private Task<CreateDependentResponse> CreateResponse(Dependent dependent, Employee employee)
+        {
+            var dependentResponse = Mapper.Map<DependentResponse>(dependent);
+            var employeeResponse = Mapper.Map<EmployeeResponse>(employee);
+
+            var response = new CreateDependentResponse
+            {
+                Employee = employeeResponse,
+                Dependent = dependentResponse
+            };
+
+            return Task.FromResult(response);
         }
     }
 }
