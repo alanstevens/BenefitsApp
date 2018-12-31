@@ -13,10 +13,6 @@ export class EmployeeComponent implements OnInit {
     firstName: string
     lastName: string
     dependents: Dependent[] = []
-    // do I need these?
-    // does one way binding update when I update employee?
-    annualBenefitsCost: string
-    benefitsCostPerPaycheck: string
 
     addDependent() {
         this.service.addDependent(this.employee.id, this.firstName, this.lastName)

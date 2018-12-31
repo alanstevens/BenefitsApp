@@ -14,21 +14,19 @@ Please implement a web application based on these assumptions:
 
 ## Assumptions
 * "Name starts with 'A'" means *first name* starts with capital 'A' only.
-* The benefits calculator is part of a larger app
-that does more than manage employees/benefits.
+* The benefits calculator is part of a larger app that does more than manage employees/benefits.
 
 ## Instructions
 * To run the app:
+    * CD ./source
     * Start the api: `npm run api`
     * In a new console window, start the ui:  `npm start`
 
 ## Prerequisites
-* `npm install -g newman`
-* `npm install -g handlebars`
-* `npm install -g http-server`
 * dotnet core 2.1 SDK: https://www.microsoft.com/net/download/
 
 ## Testing
+* CD ./source
 * API Unit Tests: `npm run apitests`
 * API Integration Tests:
     * Start the api server: `npm run api`
@@ -39,12 +37,9 @@ that does more than manage employees/benefits.
 * logging
 * validation
 * docs
+* UI unit tests
 * e2e tests
-* responsive UI
-
-## TODO
-* do gulpy things
 
 ## Developer Notes
 * Do not name postman collections with spaces. Use underscores instead.
-* Tested on Windows and Linux
+* This is only my second sample in Angular. I'm still finding my way around.
